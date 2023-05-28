@@ -1,0 +1,121 @@
+CREATE TABLE IF NOT EXISTS comments (
+    commentId int(12) NOT NULL,
+    comentariu varchar(100) NOT NULL,
+    PRIMARY KEY (commentId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS deliveries (
+    deliveryId int(12) NOT NULL,
+    orderId varchar(100) NOT NULL,
+    driverId varchar(100) NOT NULL,
+    time varchar(100) NOT NULL,
+    PRIMARY KEY (deliveryId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS drinks (
+    drinkId int(12) NOT NULL,
+    volume int(12) NOT NULL,
+    itemId int(12) NOT NULL,
+    PRIMARY KEY (drinkId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS drivers (
+    driverId int(12) NOT NULL,
+    car varchar(100) NOT NULL,
+    yearsOfExperience int(12) NOT NULL,
+    personId int(12) NOT NULL,
+    PRIMARY KEY (driverId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS foods (
+    foodId int(12) NOT NULL,
+    weight int(12) NOT NULL,
+    itemId int(12) NOT NULL,
+    PRIMARY KEY (foodId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS items (
+    itemId int(12) NOT NULL,
+    name varchar(100) NOT NULL,
+    price int(12) NOT NULL,
+    calories int(12) NOT NULL,
+    PRIMARY KEY (itemId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS locations (
+    locationId int(12) NOT NULL,
+    latitude int(12) NOT NULL,
+    longitude int(12) NOT NULL,
+    PRIMARY KEY (locationId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS menus (
+    menuId int(12) NOT NULL,
+    PRIMARY KEY (menuId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS menuFoods (
+    menuId int(12) NOT NULL,
+    foodId int(12) NOT NULL,
+    PRIMARY KEY (menuId,foodId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS menuDrinks (
+    menuId int(12) NOT NULL,
+    drinkId int(12) NOT NULL,
+    PRIMARY KEY (menuId,drinkId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS orders (
+    orderId int(12) NOT NULL,
+    userId int(12) NOT NULL,
+    locationId int(12) NOT NULL,
+    time varchar(100) NOT NULL,
+    PRIMARY KEY (orderId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS orderItems (
+    orderId int(12) NOT NULL,
+    itemId int(12) NOT NULL,
+    PRIMARY KEY (orderId,itemId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS persons (
+    personId int(12) NOT NULL,
+    firstName varchar(100) NOT NULL,
+    lastName varchar(100) NOT NULL,
+    age int(12) NOT NULL,
+    PRIMARY KEY (personId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS restaurants (
+    restaurantId int(12) NOT NULL,
+    name varchar(100) NOT NULL,
+    locationId int(12) NOT NULL,
+    menuId int(12) NOT NULL,
+    PRIMARY KEY (restaurantId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS restaurantReviews (
+    restaurantId int(12) NOT NULL,
+    reviewId int(12) NOT NULL,
+    PRIMARY KEY (restaurantId,reviewId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS reviews (
+    reviewId int(12) NOT NULL,
+    rating int(12) NOT NULL,
+    commentId int(12) NOT NULL,
+    PRIMARY KEY (reviewId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS users (
+    userId int(12) NOT NULL,
+    email varchar(100) NOT NULL,
+    phoneNumber varchar(100) NOT NULL,
+    personId int(12) NOT NULL,
+    PRIMARY KEY (userId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+COMMIT;
+
